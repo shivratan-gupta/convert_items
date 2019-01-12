@@ -17,14 +17,7 @@ class ConvertItemsController < ApplicationController
 		#puts"please enter 10 digit number which should not contain 0 and 1"
 		params[:query] = params[:query].present? ? params[:query] : ''
 		number_arr = params[:query].strip.split('')
-		if number_arr.include? '0' or number_arr.include? '1' 
-			#puts"Number should not contain 0 and 1"
-			return
-		elsif number_arr.size > 10
-			#puts"Number size should not be more then 10"
-			return
-		end
-		start_time = Time.now
+		start_time = Time.now  ### added to find the time difference
 		### to get all possible combination from given interger from user
 		all_possible_combination.each do |v|
 			arr = []
