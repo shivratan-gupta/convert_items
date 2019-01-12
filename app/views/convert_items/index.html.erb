@@ -1,0 +1,45 @@
+
+<div class="col-sm-12 pull-left">
+  <%= form_tag root_path, {method: :get, class: "navbar-form", role: "search"} do %>
+   <%= label_tag 'Enter Number:   1-800- ' %>
+   <div class="input-group">
+      <%= number_field_tag :query, nil, {class: "form-control", placeholder: "Search", id:"srch-term"} %>
+      <div class="input-group-btn">
+        <button class="btn btn-default submit" type="submit" , onclick: 'checkNum(this)'><i class="glyphicon glyphicon-search"></i></button>
+      </div>
+    </div>
+  <% end %>  
+</div>
+<div class="col-sm-12 pull-left" style="padding-left: 30px !important;padding-top: 15px">
+    <div class="input-group">
+    <%= label_tag 'Output' %>&nbsp&nbsp&nbsp : <%=@final_output%>
+  </div>
+</div>
+<script type="text/javascript">
+  
+ 
+  $('.submit').click(function(e) {
+  var validated_val = true
+    e.preventDefault();
+    var charCount = $("#srch-term").val().length;
+    if (charCount > 10) {
+      alert("Number should not be more then 10")
+      validated_val = false
+    }
+
+    var numbers = /^[2-9]+$/;
+    var inputnum = $("#srch-term").val();
+    if (inputnum.match(numbers)) {
+    }
+    else{
+      alert("Number should not contain 0 and 1")
+      validated_val = false
+    }
+    if (validated_val){
+      $('form').submit();
+    }
+      
+    
+  });
+
+</script>
